@@ -39,13 +39,16 @@ Public LoadBalancer or CDN. Helm: [`../platform/deploy/helm/uam/`](../platform/d
 
 ### Render
 
-Set in the **Render dashboard** (not in git):
+Set in the **Render dashboard** (not in git). Use the gateway **internal** hostname from
+**gateway-edge → Connect → Internal** (avoids `508 Loop Detected` when proxying public URLs).
 
 | Variable | Example |
 |----------|---------|
 | `VITE_API_URL` | `/api` |
-| `GATEWAY_PROXY_PASS` | `https://YOUR-GATEWAY.onrender.com/api/` |
-| `GATEWAY_PROXY_HOST` | `YOUR-GATEWAY.onrender.com` |
+| `GATEWAY_INTERNAL_HOST` | `gateway-edge-xxxx` (from Internal tab) |
+| `GATEWAY_INTERNAL_PORT` | `8080` |
+
+Do **not** use `https://*.onrender.com` for `GATEWAY_PROXY_PASS` between Render web services.
 
 `nginx.conf.template` is rendered at container start via `docker-entrypoint.sh`.
 Local Compose keeps defaults (`http://gateway:8080/api/`).
