@@ -37,4 +37,15 @@ Console: http://localhost:8091
 
 Public LoadBalancer or CDN. Helm: [`../platform/deploy/helm/uam/`](../platform/deploy/helm/uam/)
 
-Set nginx upstream to your gateway service URL (see `nginx.conf`).
+### Render
+
+Set in the **Render dashboard** (not in git):
+
+| Variable | Example |
+|----------|---------|
+| `VITE_API_URL` | `/api` |
+| `GATEWAY_PROXY_PASS` | `https://YOUR-GATEWAY.onrender.com/api/` |
+| `GATEWAY_PROXY_HOST` | `YOUR-GATEWAY.onrender.com` |
+
+`nginx.conf.template` is rendered at container start via `docker-entrypoint.sh`.
+Local Compose keeps defaults (`http://gateway:8080/api/`).
