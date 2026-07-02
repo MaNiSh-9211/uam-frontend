@@ -1,0 +1,7 @@
+services:
+  uam-frontend:
+    build: .
+    ports:
+      - "8091:80"
+    environment:
+      VITE_API_URL: /api
