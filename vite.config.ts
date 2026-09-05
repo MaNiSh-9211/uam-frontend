@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://gatewayedge-1m333yk8.b4a.run',
+        target: 'https://gateway-edge.onrender.com',
         changeOrigin: true,
         secure: true,
       },
