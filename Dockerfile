@@ -6,7 +6,7 @@ WORKDIR /app
 COPY package.json package-lock.json* .npmrc ./
 RUN npm install
 COPY . .
-RUN echo "VITE_API_URL=$VITE_API_URL" && npm run build
+RUN npm run build
 
 FROM node:20-alpine
 RUN npm install -g serve@14

@@ -35,6 +35,5 @@ Thumbs.db
 data/users.json
 
 # --- security: local env & deps ---
-.env
-.env.*
-!*.env.example
+.env.local
+.env.*.local
